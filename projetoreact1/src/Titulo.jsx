@@ -1,23 +1,20 @@
-export default function Titulo({ nome, paragrafo, cor }) {
+import { useState } from "react";
 
-    let nomezinho = "Gabs y Juh";
-    const somatoria = 19 + 1;
+export default function Titulo({ cor }) {
 
+    
+    const [texto, setTexto] = useState("Um title state inicial")
+    const [inputText, setInputText] = useState("");
 
+    function clicou() {
+        setTexto(inputText);
+    }
 
     return (
-        <>
-            <h1>Oi eu sou um {nomezinho} e também posso ser um {nome ? nome : nome = "Coringa"}</h1>
-            {paragrafo ?
-                <p style={{color:cor}}>Lorem ipsum, dolor sit a
-                    met consectetur adipisicing elit. Totam, culpa hic? Accusantium, earum . . . . .
-                    {somatoria}
-
-                </p>
-
-                : <p style={{color:cor}} > Nadinha </p>}
-
-
-        </>
+        <div>
+            <h1 style={{ color: cor }}>{texto}</h1>
+            <input type="text" value={inputText} onChange={(e)=>{setInputText(e.target.value)}}/>
+            <button onClick={clicou}>Mudar</button>
+        </div>
     )
 }
